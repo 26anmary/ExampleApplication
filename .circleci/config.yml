@@ -20,12 +20,14 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SHA256:iUvqvlbqrQIuziIJ/cmCq3byu1m3kgtoxC6Zqu3ZKbk"
-            - run:
+
+      - run:
           name: Check loaded SSH key
           command: ssh-add -l -E sha256
-          - run:
+
+      - run:
           name: Deploy application to EC2
-          command: 
+          command: |
             ssh -o StrictHostKeyChecking=no "$EC2_USERNAME@$EC2_PUBLIC_DNS" 'cd /home/ubuntu/ExampleApplication && git pull origin main && bash deploy.sh'
 
 workflows:
