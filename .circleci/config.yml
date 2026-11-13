@@ -17,7 +17,9 @@ jobs:
     docker:
       - image: cimg/node:20.20
     steps:
-      - add_ssh_keys
+            - add_ssh_keys:
+          fingerprints:
+            - "SHA256:iUvqvlbqrQIuziIJ/cmCq3byu1m3kgtoxC6Zqu3ZKbk"
       - run:
           name: Deploy application to EC2
           command: |
